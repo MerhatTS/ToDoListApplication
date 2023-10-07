@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwww.thymleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<head th:replace="~{fragments/title}"></head>
+<body>
+<div>
+    <div class="container">
+        <form th:object="${todo}" th:action="@{/index/changeOfStatusActive/{id}(id = ${todo.id})}" method="POST">
+            <div class="row mt-2">
+                <div class="col-4 text-right">
+                    <label for="title" class="form_label">Задача: </label>
+                </div>
+                <div class="col-8">
+                    <input type="text" class="form-control" id="title" name="title" th:value="${todo.title}">
+                </div>
+                <div class="col-4 text-right">
+                    <label class="form_label">Статус: [[${todo.isActive}]]</label>
+                </div>
+                <div class="col-8">
+                    <div>
+                        <input type="checkbox" id="true" name="isCompleted" value="true" />
+                        <label for="true">true</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="false" name="isCompleted" value="false" />
+                        <label for="false">false</label>
+                    </div>
+                </div>
+            </div>
+            <a th:href="@{/index}">
+                <button type="button" class="btn btn-outline-primary">Назад</button>
+            </a>
+            <button type="submit" class="btn btn-outline-primary">Сохранить</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+<div th:insert="~{fragments/scripts}"> </div>
+</body>
+</html>

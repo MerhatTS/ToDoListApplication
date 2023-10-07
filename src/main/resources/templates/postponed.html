@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwww.thymleaf.org">
+<head th:replace="~{fragments/title}"></head>
+<body>
+<div class="container">
+    <div class="row align-items-start">
+        <div class="col-5">Имя отложенной задачи:</div>
+        <div class="col-5">Статус отложенной задачи: </div>
+    </div>
+    <div class="row align-items-start" th:each="todo, iter : ${todo}">
+        <div class="col-5">
+            [[${todo.title}]]
+        </div>
+        <div class="col-5" >
+            [[${todo.isPostponed}]]
+        </div>
+    </div>
+    <div row mr-5>
+        <a th:href="@{/index}">
+            <button type="button" class="btn btn-outline-primary">Назад</button>
+        </a>
+    </div>
+</div>
+<div th:insert="~{fragments/scripts}"> </div>
+</body>
+</html>

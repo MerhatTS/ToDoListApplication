@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwww.thymleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/title}"></head>
+<body>
+<div>
+    <div class="container">
+            <form th:action="@{/add}" method="POST">
+                <div class="row align-items-start">
+                    <div class="col-7">
+                        <label for="title">Введите описание задачи: </label>
+                    </div>
+                    <div class="col-5">
+                        <input type="text" id="title" name="title">
+                    </div>
+                </div>
+
+                <div class="col">
+                    <a th:href="@{/index}">
+                    <button type="submit" class="btn btn-outline-primary">Добавить</button>
+                    </a>
+                </div>
+            </form>
+    </div>
+</div>
+<div th:insert="~{fragments/scripts}"> </div>
+</body>
+</html>
