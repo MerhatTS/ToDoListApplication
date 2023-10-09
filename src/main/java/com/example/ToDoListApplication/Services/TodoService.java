@@ -77,6 +77,13 @@ public class TodoService {
         System.out.println("isPostponed " + todo.getIsPostponed());
         System.out.println("isActive " + todo.getIsActive());
 
+        if (todo.getIsCompleted() == true){
+            todo.getTitle();
+        }else {
+            todo.setIsCompleted(false);
+        }
+
+
         if (todo.getIsCompleted() == true && todo.getIsPostponed() == true && todo.getIsActive() == false){
             todo.setIsCompleted(true);
             todo.setIsPostponed(false);
