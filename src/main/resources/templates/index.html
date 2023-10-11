@@ -30,29 +30,69 @@
     </div>
     <div class="container">
         <div class="row align-items-start" th:each="todo, iter : ${todo}">
-            <div class="col-5" a="btn btn-light">
-<!--                'User is of type ' + (${user.isAdmin()} ? 'Administrator' : (${user.type} ?: 'Unknown'))-->
-                <p style ="background: ##ffffff;" th:styleappend = "${todo.isCompleted} ? 'color: gray' : (${todo.isPostponed} ?: 'color: red')">[[${todo.title}]]</p>
-<!--                <p style ="background: ##ffffff;" th:styleappend = "${todo.isCompleted} ? 'color: gray' : 'color: black'">[[${todo.title}]]</p>-->
-            </div>
-            <div class="col">
-                <a th:href="@{/changeOfStatusCompleted/{id}(id = ${todo.id})}">
-                    <button type="button" class="btn btn-secondary">Завершенно</button>
-                </a>
-            </div>
-            <div class="col">
-                <a th:href="@{/changeOfStatusPostponed/{id}(id = ${todo.id})}">
-                    <button type="button" class="btn" th:classappend="${todo.isPostponed ? 'btn-dark' : 'btn-danger'}"  th:text="${todo.isPostponed} ? 'Active' : 'Postponed' "></button>
-                </a>
-            </div>
-            <div class="col">
-                <a th:href="@{/delete/{id}(id = ${todo.id})}">
-                    <button type="button" a="btn btn-light">Удалить</button>
-                </a>
-            </div>
-            <div class="col">
-                    <button type="button" class="btn btn-success">Приоритет</button>
-            </div>
+                <div class="col-5">
+
+                    <div class="text-left">
+<!--                    th:style="${todo.isCompleted == true} ? '${todo.title == background-color: red }' : 'background-color: green'">-->
+
+                    <!--                <p style ="background: ##ffffff;" th:styleappend = "${todo.isCompleted} ? 'color: gray' : 'color: green'">[[${todo.title}]]</p>-->
+
+                        <p style ="width:500px" th:styleappend = "${todo.isCompleted == true} ?
+                        'width:500px;border-bottom: solid 3px gray;padding-left:10px' : 'width:500px;border-bottom: solid 3px black;padding-left:10px' ">
+                            [[${todo.title}]]
+                        </p>
+
+                    <!--                <p th:style="${todo.isPostponed == true} ? 'background-color: green' : 'background-color: red'">[[${todo.title}]]</p>-->
+                    <!--                <th:iterator value="todo" status="stat">-->
+                    <!--                    <tr>-->
+                    <!--                        <td><th:property value="todo [#todo.].name" /></td>-->
+                    <!--                        <td><th:property value="userList [#stat.index].login" /></td>-->
+                    <!--                        <td><th:property value="userList [#stat.index].email" /></td>-->
+                    <!--                    </tr>-->
+                    <!--                </th:iterator>-->
+
+<!--                    [[${todo.title}]]-->
+                    </div>
+                </div>
+
+                <div class="col">
+                    <a th:href="@{/changeOfStatusCompleted/{id}(id = ${todo.id})}">
+                        <button type="button">
+    <!--                            class="btn" th:style="${todo.isCompleted == true} ? '${todo.title == background-color: yellow}' : 'background-color: green'"-->
+                        Завершенно
+                        </button>
+                    </a>
+
+    <!--                <span th:if="${student.gender} == 'M'" th:text="Male" />-->
+    <!--                <span th:unless="${student.gender} == 'M'" th:text="Female" />-->
+
+    <!--                <th:iterator value="userList" status="stat">-->
+    <!--                    <tr>-->
+    <!--                        <td><th:property value="userList [#stat.index].name" /></td>-->
+    <!--                        <td><th:property value="userList [#stat.index].login" /></td>-->
+    <!--                        <td><th:property value="userList [#stat.index].email" /></td>-->
+    <!--                    </tr>-->
+    <!--                </th:iterator>-->
+
+
+                </div>
+
+                <div class="col">
+                    <a th:href="@{/changeOfStatusPostponed/{id}(id = ${todo.id})}">
+                        <button type="button" style="border-radius: 5px;" th:text="${todo.isPostponed} ? 'Active' : 'Postponed' ">
+    <!--                            class="btn" th:classappend="${todo.isPostponed ? 'btn-dark' : 'btn-danger'}"  -->
+                        </button>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a th:href="@{/delete/{id}(id = ${todo.id})}">
+                        <button type="button" a="btn btn-light">Удалить</button>
+                    </a>
+                </div>
+                <div class="col">
+                        <button type="button">Приоритет</button>
+                </div>
         </div>
         <div row mr-5>
             <a th:href="@{/add}">

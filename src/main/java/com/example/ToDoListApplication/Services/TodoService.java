@@ -28,19 +28,19 @@ public class TodoService {
 
     public void index(Model model){
         Pageable pageable = PageRequest.of(0, 20, Sort.by("id"));
-        Page<ToDo> todo = todoPageRepository.findAllByOrderByTitleAsc(pageable);
+        Page<ToDo> todo = todoPageRepository.findAll2(pageable);
 
         model.addAttribute("number", todo.getNumber());
         model.addAttribute("totalPages", todo.getTotalPages());
         model.addAttribute("todo", todo.getContent());
 
-        List<ToDo> allToDo = todoRepositories.findAll();
-        model.addAttribute("todo", allToDo);
+//        List<ToDo> allToDo = todoRepositories.findAll();
+//        model.addAttribute("todo", allToDo);
     }
 
-    public void page(Model model, Integer id) {
+    public void page(Model model, Integer id){
         Pageable pageable = PageRequest.of(id-1, 20, Sort.by("id"));
-        Page<ToDo> todo = todoPageRepository.findAllByOrderByTitleAsc(pageable);
+        Page<ToDo> todo = todoPageRepository.findAll2(pageable);
 
         model.addAttribute("number", todo.getNumber());
         model.addAttribute("totalPages", todo.getTotalPages());
@@ -77,11 +77,11 @@ public class TodoService {
         System.out.println("isPostponed " + todo.getIsPostponed());
         System.out.println("isActive " + todo.getIsActive());
 
-        if (todo.getIsCompleted() == true){
-            todo.getTitle();
-        }else {
-            todo.setIsCompleted(false);
-        }
+//        if (todo.getIsCompleted() == true){
+//            todo.getTitle();
+//        }else {
+//            todo.setIsCompleted(false);
+//        }
 
 
         if (todo.getIsCompleted() == true && todo.getIsPostponed() == true && todo.getIsActive() == false){

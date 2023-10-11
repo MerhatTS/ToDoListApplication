@@ -8,6 +8,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 public interface TodoPageRepository extends PagingAndSortingRepository<ToDo, Integer> {
     Page<ToDo> findAllByOrderByTitleAsc(Pageable pageable);
 
-    @Query(value = "from ToDo t order by t.isCompleted, t.isPostponed")
+    @Query(value = "from ToDo t order by t.isCompleted, t.isPostponed, t.isActive desc")
     Page<ToDo> findAll2(Pageable pageable);
 }
