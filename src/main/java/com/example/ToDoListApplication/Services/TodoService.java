@@ -1,6 +1,5 @@
 package com.example.ToDoListApplication.Services;
 
-import com.example.ToDoListApplication.DAO.ToDoDao;
 import com.example.ToDoListApplication.Entity.ToDo;
 import com.example.ToDoListApplication.Repositories.TodoPageRepository;
 import com.example.ToDoListApplication.Repositories.TodoRepositories;
@@ -23,8 +22,6 @@ public class TodoService {
     @Autowired
     TodoPageRepository todoPageRepository;
 
-    @Autowired
-    ToDoDao toDoDao;
 
     public void index(Model model){
         Pageable pageable = PageRequest.of(0, 20, Sort.by("id"));
