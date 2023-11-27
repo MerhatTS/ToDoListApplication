@@ -26,15 +26,14 @@ public class TodoController {
     }
 
     @GetMapping("/add")
-    public String addG(Model model, ToDo todo){
-        todoService.addG(model, todo);
+    public String add(){
         return "add";
         //return new RedirectView("/index");
     }
 
     @PostMapping("/add")
-    public String addP(@ModelAttribute("todo")ToDo todo, Model model){
-        todoService.addP(model, todo);
+    public String add(@RequestParam String title){
+        todoService.add(title);
         return "redirect:/index";
     }
 
@@ -57,7 +56,7 @@ public class TodoController {
     }
 
     @RequestMapping("index/active")
-    public String isActive(Model model, ToDo todo){
+    public String active(Model model, ToDo todo){
         todoService.active(model, todo);
         return "active";
     }
